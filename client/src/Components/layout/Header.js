@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { BiSolidShoppingBagAlt } from "react-icons/bi";
 import { useAuth } from '../context/authContext';
 import toast from 'react-hot-toast';
+import SearchForm from '../Form/SearchForm';
 
 const Header = () => {
 
@@ -31,6 +32,9 @@ const Header = () => {
     <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
       <NavLink className="navbar-brand" to='/'><img src={'/images/logo.png'} alt='logo' style={{height: '30px', width: '50px'}}/>  Imperial Fashions </NavLink>
       <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
+      <div>
+      <SearchForm />
+      </div>
         <li className="nav-item">
           <NavLink className="nav-link" aria-current="page" to='/'>Home</NavLink>
         </li>

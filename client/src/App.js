@@ -19,12 +19,16 @@ import Profile from "./Pages/user/Profile";
 import Order from "./Pages/user/Order";
 import Products from "./Pages/Admin/Products";
 import UpdateProduct from "./Pages/Admin/UpdateProduct";
+import SearchPage from "./Pages/SearchPage";
+import ProductDetails from "./Pages/ProductDetails";
 
 function App() {
   return (
     <>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/search" element={<SearchPage />} />
+        <Route path="/product/:slug" element={<ProductDetails />} />
         <Route path="/dashboard" element={<PrivateRoute />}>
           <Route path="user" element={<Dashboard />} />
           <Route path="user/profile" element={<Profile />} />
