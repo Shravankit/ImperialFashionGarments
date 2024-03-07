@@ -147,9 +147,9 @@ const handleLoadmore = async () => {
             
             <h5 className='text-center'>Filter By Rates</h5>
             <div className='d-flex flex-column'>
-              {Prices?.map((price) => {
-                return <Radio.Group onChange={(e) => {setRadio(e.target.value)}}>
-                  <div key={price._id}>
+              {Prices?.map((price, index) => {
+                return <Radio.Group key={`${price._id}_${index}`} onChange={(e) => {setRadio(e.target.value)}}>
+                  <div>
                     <Radio value={price.array}>{price.name}</Radio>
                   </div>
                 </Radio.Group>
@@ -160,13 +160,11 @@ const handleLoadmore = async () => {
             </div>
           </div>
           <div className='col-md-9'>
-          {JSON.stringify(checked, null, 4)}
-          {JSON.stringify(radio, null, 4)}
             <h1 className='text-center'>All Products</h1>
             <div className='d-flex flex-wrap'>
               <div className='d-flex flex-wrap'>
-                    {products?.map((p) => {
-                       return <div className="card m-1" style={{width: '18rem'}} key={p._id}>
+                    {products?.map((p, index) => {
+                       return <div className="card m-1" style={{width: '20rem'}} key={`${p._id}_${index}`}>
                           <img src={`/api/v1/product/get-product-photo/${p._id}`} className="card-img-top" alt={p.name} width={'2rem'} />
                           <div className="card-body">
                             <h5 className="card-title">{p.name}</h5>
