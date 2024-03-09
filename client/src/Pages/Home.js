@@ -16,6 +16,7 @@ const Home = () => {
   const [total, setTotal] = useState(0);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
+  
 
 
   //navigation 
@@ -62,7 +63,7 @@ const handleLoadmore = async () => {
   try {
     const {data} = await axios.get(`/api/v1/product/product-list/${page}`);
     setLoading(true);
-    setProducts([...products, ...data.products])
+    setProducts([...products, ...data?.products])
     setLoading(false);
   } catch (error) {
     console.log(error);
@@ -100,7 +101,7 @@ const handleLoadmore = async () => {
     }
     else
     {
-      all = all.filter(c => c !== id);
+      all = all.filter((c) => c !== id);
     }
     setChecked(all);
   }
@@ -167,6 +168,7 @@ const handleLoadmore = async () => {
                        return <div className="card m-1" style={{width: '20rem'}} key={`${p._id}_${index}`}>
                           <img src={`/api/v1/product/get-product-photo/${p._id}`} className="card-img-top" alt={p.name} width={'2rem'} />
                           <div className="card-body">
+                            <>{p._id}</>
                             <h5 className="card-title">{p.name}</h5>
                             <p className="card-text">{p.description.substring(0, 20)}</p>
                             <p className="card-text">${p.price}</p>
